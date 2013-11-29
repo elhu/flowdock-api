@@ -59,7 +59,7 @@ Capistrano::Configuration.instance(:must_exist).load do
     def notification_message
       if branch == current_branch
         message = "<p>The following changes were just deployed to #{flowdock_deploy_env}:</p>"
-        commits = repo.commits_between(current_revisionC, source.head).reverse
+        commits = repo.commits_between(current_revision, latest_revision).reverse
 
         unless commits.empty?
           commits.each do |c|
